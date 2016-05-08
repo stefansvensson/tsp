@@ -27,3 +27,17 @@
       <md-button class="md-raised md-warn">Warn</md-button>
       <div class="label">Raised</div>
 </section>
+
+<md-toolbar class="md-tall md-hue-2">
+        <span flex></span>
+        <div layout="column" class="md-toolbar-tools-bottom inset">
+          <user-avatar></user-avatar>
+          <span></span>
+          <div>Firstname Lastname</div>
+          <div>email@domainname.com</div>
+        </div>
+      </md-toolbar>
+
+      <button class="md-fab md-fab-bottom-right md-button md-default-theme" ng-transclude="" aria-label="Add" ng-click="showAdd($event)" tabindex="0">
+        <ng-md-icon icon="add" class="ng-scope"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></ng-md-icon>
+      <div class="md-ripple-container"></div></button>

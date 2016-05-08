@@ -10,13 +10,34 @@
     .module(app.applicationModuleName)
     .config(bootstrapConfig);
 
-  function bootstrapConfig($locationProvider, $httpProvider) {
+  function bootstrapConfig($locationProvider, $httpProvider, $mdThemingProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     $httpProvider.interceptors.push('authInterceptor');
+
+    $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('red');
+
+
+    var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
+      'contrastDefaultColor': 'light',
+      'contrastDarkColors': ['50'],
+      '50': 'ffffff'
+    });
+
+    $mdThemingProvider.definePalette('customBlue', customBlueMap);
+    $mdThemingProvider.theme('default')
+    .primaryPalette('customBlue', {
+      'default': '500',
+      'hue-1': '50'
+    })
+    .accentPalette('pink');
+    $mdThemingProvider.theme('input', 'default')
+        .primaryPalette('grey');
   }
 
-  bootstrapConfig.$inject = ['$locationProvider', '$httpProvider'];
+  bootstrapConfig.$inject = ['$locationProvider', '$httpProvider', '$mdThemingProvider'];
 
   // Then define the init function for starting up the application
   angular.element(document).ready(init);
